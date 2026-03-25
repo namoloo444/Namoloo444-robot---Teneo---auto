@@ -1,0 +1,25 @@
+name: Teneo_Ultra_Discret
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # Relance toutes les 2 heures
+  workflow_dispatch:
+
+jobs:
+  teneo-session:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Simulation Connexion
+        env:
+          MY_TOKEN: ${{ secrets.TENEO_TOKEN }}
+        run: |
+          echo "Démarrage du cycle de 2h..."
+          for i in {1..50}
+          do
+            echo "Ping $((i))/50..."
+            curl -s -X POST "https://api.teneo.pro" \
+            -H "Authorization: Bearer $MY_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{}"
+            sleep $((30 + RANDOM % 20))
+          done
