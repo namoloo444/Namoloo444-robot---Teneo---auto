@@ -17,9 +17,9 @@ jobs:
           for i in {1..50}
           do
             echo "Ping $((i))/50..."
-            curl -s -X POST "https://teneo-heartbeat.pro/api/v1/heartbeat" \
-            -H "Authorization: Bearer $MY_TOKEN" \
-            -H "Content-Type: application/json" \
-            -d "{}"
+            curl -s -X POST "https://teneo-heartbeat.pro" -H "Authorization: Bearer ${{ secrets.TENEO_TOKEN }}" -H "Content-Type: application/json" -d "{}"
             sleep $((30 + RANDOM % 20))
           done
+
+
+
