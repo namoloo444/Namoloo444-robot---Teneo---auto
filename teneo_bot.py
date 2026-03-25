@@ -5,7 +5,9 @@ import random
 
 # CONFIGURATION
 TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzYmduYXR1cmUiOiJmZDlmYA4ZWUzMTNKMjBkODRkZWU3NGU5NTgxYTRIYWM2NzFkMWZkMjNhNjk4OGI1MGM5Tg1ODFkMzVmZDU2NWVjMTYwYTJhZjZmM2NkZmN1ZWU1MmZlNjM2MDQ3ZWJhZjBOTQ3NH0.2NAvYaGG3IjCzNVwxDNTcmDuiPw_uJy0CcgdnvUyxWW"
-API_URL = "https://api.teneo.pro/api/v2/heartbeat"
+BASE_URL = "https://api.teneo.pro"
+API_URL = BASE_URL + "/api/v2/heartbeat"
+
 
 async def run_teneo():
     user_agents = [
