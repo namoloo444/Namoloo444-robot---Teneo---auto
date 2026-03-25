@@ -42,7 +42,7 @@ async def run_teneo():
 
             except Exception as e:
                 print(f"❌ Erreur : {e}. Reconnexion...")
-                await asyncio.sleep(60
+                await asyncio.sleep(60)
         
 if __name__ == "__main__":
     asyncio.run(run_teneo())
