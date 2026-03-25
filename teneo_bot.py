@@ -14,7 +14,7 @@ async def run_teneo():
     ]
 
     headers = {
-        "Authorization": f"Bearer {TOKEN}",
+        "Authorization": f"{TOKEN}",
         "Content-Type": "application/json",
         "User-Agent": random.choice(user_agents),
         "Origin": "https://teneo.pro"
