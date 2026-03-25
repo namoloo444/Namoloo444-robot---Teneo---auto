@@ -1,0 +1,25 @@
+name: Teneo_Invisible_Miner
+
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Relance automatique toutes les 4h
+  workflow_dispatch: # Pour lancer manuellement
+
+jobs:
+  earn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install aiohttp
+        run: pip install aiohttp
+
+      - name: Lancer le Bot Teneo
+        # Le -u force l'affichage des messages en temps réel
+        run: python -u teneo_bot.py
