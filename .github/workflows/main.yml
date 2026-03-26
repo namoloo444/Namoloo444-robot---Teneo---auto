@@ -1,25 +1,17 @@
-name: Teneo_Invisible_Miner
-
+name: Robot_Teneo_Permanent
 on:
   schedule:
-    - cron: '0 */4 * * *' # Relance automatique toutes les 4h
-  workflow_dispatch: # Pour lancer manuellement
+    - cron: '*/15 * * * *' # S'exécute TOUTES LES 15 MINUTES
+  workflow_dispatch:
 
 jobs:
-  earn:
+  ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-
-      - name: Install aiohttp
-        run: pip install aiohttp
-
-      - name: Lancer le Bot Teneo
-        # Le -u force l'affichage des messages en temps réel
-        run: python -u teneo_bot.py
+      - name: Connexion Furtive Teneo
+        run: |
+          curl -s -X POST "https://api.teneo.pro" \
+          -H "Authorization: Bearer ${{ secrets.TENEO_TOKEN }}" \
+          -H "Content-Type: application/json" \
+          -d '{"type":"ping"}'
+          echo "Points Teneo envoyés avec succès sur GitHub !"
